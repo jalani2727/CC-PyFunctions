@@ -20,13 +20,32 @@ brownie_points = score_words("brownie")
 players = ["player1", "wordNerd", "Lexi Con", "Prof Reader"]
 words = [["blue", "tennis", "exit"], ["earth", "eyes", "machine"], ["eraser", "belly", "husky"], ["zap", "coma", "period"]]
 player_to_words = {key:value for key, value in zip(players, words)}
-#print(player_to_words)
+print(player_to_words)
 
-player_to_points = {}
-for player, words in player_to_words.items():
-  player_points = 0
-  for word in words:
-    player_points += score_words(word)
-  player_to_points[player] = player_points
+#turn your nested loops into a function that you can call any time a word is played
+def update_point_totals(): 
+  player_to_points = {}
+  for player, words in player_to_words.items():
+    player_points = 0
+    for word in words:
+      player_points += score_words(word)
+    player_to_points[player] = player_points
+  print(player_to_points)
+
+ #adds a new word to the selected player's word values
+def play_word(player, new_word):
+  player_to_words[player].append(new_word)
+  update_point_totals()
   
-print(player_to_points)
+play_word("player1", "tiddies")  
+play_word("wordNerd", "asymptote")  
+  
+
+  
+
+
+
+  
+
+
+  
